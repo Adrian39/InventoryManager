@@ -9,4 +9,8 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="tab_text_1">Escanear</string>
+    <string name="tab_text_2">Inventario</string>
+    <string name="mainActivity_textEdit_placeHolder">CODIGO</string>
 </resources>
