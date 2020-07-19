@@ -41,6 +41,7 @@ public class LoginViewModel extends ViewModel {
         }
     }
 
+    //Show error message if user/password is invalid
     public void loginDataChanged(String username, String password) {
         if (!isUserNameValid(username)) {
             loginFormState.setValue(new LoginFormState(R.string.invalid_username, null));
