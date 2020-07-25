@@ -7,34 +7,115 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.PlaceholderFragment">
 
-    <ImageView
-        android:id="@+id/pictureView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/holo_blue_bright"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="TODO">
 
-    </ImageView>
-
-    <EditText
-android:id="@+id/barcodeEditText"
+    <LinearLayout
+        android:id="@+id/productDescriptionLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        app:layout_constraintTop_toBottomOf="@+id/pictureView"
-        app:layout_constraintLeft_toLeftOf="@+id/pictureView"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@android:color/holo_green_dark"
-        android:hint="@string/mainActivity_textEdit_placeHolder"
-        android:inputType="text"
-        tools:ignore="LabelFor"
-        android:autofillHints="" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:weightSum="4"
+        >
 
+        <ImageView
+            android:id="@+id/pictureView"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/holo_blue_bright"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_weight="1"
+            android:contentDescription="TODO"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="2"
+            />
+
+    </LinearLayout>
+
+
+<LinearLayout
+    android:id="@+id/barcodeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="start"
+    android:orientation="horizontal"
+    android:weightSum="3"
+    app:layout_constraintLeft_toLeftOf="@id/productDescriptionLayout"
+    app:layout_constraintTop_toBottomOf="@id/productDescriptionLayout"
+    android:layout_marginTop="24dp"
+    >
+
+    <EditText
+        android:id="@+id/barcodeEditText"
+android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:hint="@string/mainActivity_textEdit_placeHolder"
+        android:inputType="number"
+        tools:ignore="LabelFor"
+        android:autofillHints=""
+        android:textAlignment="center"
+        android:layout_width="0dp" />
+
+    <ImageButton
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:layout_constraintLeft_toRightOf="@+id/barcodeEditText"
+        app:layout_constraintTop_toTopOf="@id/barcodeEditText"
+        android:layout_marginLeft="12dp"
+        android:background="@android:color/transparent"
+        android:src="@android:drawable/ic_menu_camera"
+
+
+        >
+    </ImageButton>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:weightSum="3"
+
+        app:layout_constraintLeft_toLeftOf="@+id/barcodeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/barcodeLayout"
+        android:layout_marginTop="64dp"
+
+        >
+<ImageButton
+    android:id="@+id/minusButton"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:src="@android:drawable/ic_delete"
+    android:background="@android:color/transparent"
+    android:tint="@color/colorPrimary"
+    android:layout_weight="1"/>
+<EditText
+    android:id="@+id/amountTextEdit"
+    android:layout_width="20dp"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:inputType="number"
+    android:hint="@string/mainActivity_amountTextEdit_placeHolder"
+    android:textAlignment="center"
+    android:layout_weight="1"/>
+        <ImageButton
+            android:id="@+id/plusButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@android:drawable/ic_input_add"
+            android:tint="@color/colorPrimary"
+            android:background="@android:color/transparent"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
 
 
 

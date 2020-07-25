@@ -13,4 +13,5 @@
     <string name="tab_text_1">Escanear</string>
     <string name="tab_text_2">Inventario</string>
     <string name="mainActivity_textEdit_placeHolder">CODIGO</string>
+    <string name="mainActivity_amountTextEdit_placeHolder">0</string>
 </resources>
