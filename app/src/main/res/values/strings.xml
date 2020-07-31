@@ -14,4 +14,7 @@
     <string name="tab_text_2">Inventario</string>
     <string name="mainActivity_textEdit_placeHolder">CODIGO</string>
     <string name="mainActivity_amountTextEdit_placeHolder">0</string>
+    <string name="btn_CiclicoInventory_Hint">Inventario Cíclico</string>
+    <string name="btn_LoteInventory_Hint">Inventario por Lote</string>
+
 </resources>
