@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.PlaceholderFragment"
-
     >
 
 
@@ -17,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:weightSum="4"
-
         >
 
         <ImageView
@@ -29,14 +27,17 @@
             android:background="@android:color/holo_blue_bright"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:contentDescription="TODO"/>
+
         <TextView
+            android:id="@+id/txtProdName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_weight="2"
+            android:hint="@string/hint_product_name"
             />
 
     </LinearLayout>
@@ -48,15 +49,14 @@
     android:layout_height="wrap_content"
     android:gravity="start"
     android:orientation="horizontal"
-    android:weightSum="3"
+    android:weightSum="4"
     app:layout_constraintLeft_toLeftOf="@id/productDescriptionLayout"
     app:layout_constraintTop_toBottomOf="@id/productDescriptionLayout"
-    android:layout_marginTop="24dp"
-    >
+    android:layout_marginTop="24dp">
 
     <EditText
         android:id="@+id/barcodeEditText"
-android:layout_weight="2"
+        android:layout_weight="2"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:hint="@string/mainActivity_textEdit_placeHolder"
@@ -74,10 +74,17 @@ android:layout_weight="2"
         android:layout_marginLeft="12dp"
         android:background="@android:color/transparent"
         android:src="@android:drawable/ic_menu_camera"
+        android:layout_weight="1"/>
 
-
-        >
-    </ImageButton>
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginRight="16dp"
+        android:text="@string/btn_search"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorIcons"/>
 
 </LinearLayout>
 

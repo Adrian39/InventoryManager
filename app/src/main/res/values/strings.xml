@@ -9,12 +9,27 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="title_activity_main">MainActivity</string>
+
     <string name="tab_text_1">Escanear</string>
     <string name="tab_text_2">Inventario</string>
     <string name="mainActivity_textEdit_placeHolder">CODIGO</string>
     <string name="mainActivity_amountTextEdit_placeHolder">0</string>
+
+
+    <!--Activity Names-->
+    <string name="title_activity_main">MainActivity</string>
+
+    <!--Labels-->
+    <string name="lbl_cyclic_selected">Inventario Ciclico Seleccionado</string>
+    <string name="lbl_lote_selected">Inventario por Lote Seleccionado</string>
+
+    <!--Buttons-->
+    <string name="btn_select_inv_type">Seleccionar</string>
     <string name="btn_CiclicoInventory_Hint">Inventario Cíclico</string>
     <string name="btn_LoteInventory_Hint">Inventario por Lote</string>
+    <string name="btn_search">Buscar</string>
+
+    <!--Hints-->
+    <string name="hint_product_name">Nombre del Producto</string>
 
 </resources>
