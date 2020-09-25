@@ -32,4 +32,9 @@
     <!--Hints-->
     <string name="hint_product_name">Nombre del Producto</string>
 
+    <!--Warnings / Messages-->
+    <string name="msg_connection_null">Connection is null</string>
+    <string name="msg_connection_success">Success</string>
+    <string name="msg_connection_failed">Failed</string>
+
 </resources>

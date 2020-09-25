@@ -25,7 +25,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.security.PrivilegedAction;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -41,9 +43,10 @@ public class PlaceholderFragment extends Fragment {
     private EditText amountEditText;
     private EditText codeEditText;
     private TextView productName;
+    private Button searchButton;
 
     //INTERNET CONNECTION VARIABLES
-    private static final String IP = "192.168.0.12";
+    private static final String IP = "192.168.0.19";
     private static final String PORT = "1433";
     private static String mClass = "net.sourceforge.jtds.jdbc.Driver";
     private static final String DATABASE = "adCOMER2018";
@@ -67,26 +70,10 @@ public class PlaceholderFragment extends Fragment {
         pageViewModel = ViewModelProviders.of(this).get(PageViewModel.class);
         int index = 1;
 
-
-
         if (getArguments() != null) {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
         }
         pageViewModel.setIndex(index);
-
-        //DATABASE CONNECTION
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        try {
-            Class.forName(mClass);
-            mConnection = DriverManager.getConnection(mURL, mUserName, mPass);
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -98,7 +85,9 @@ public class PlaceholderFragment extends Fragment {
         minusButton = root.findViewById(R.id.minusButton);
         plusButton = root.findViewById(R.id.plusButton);
         amountEditText = root.findViewById(R.id.amountTextEdit);
-
+        codeEditText = root.findViewById(R.id.barcodeEditText);
+        productName = root.findViewById(R.id.txtProdName);
+        searchButton = root.findViewById(R.id.btn_search);
 
 
         minusButton.setOnClickListener(new View.OnClickListener() {
@@ -117,10 +106,36 @@ public class PlaceholderFragment extends Fragment {
             }
         });
 
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchItemByCode();
+            }
+        });
 
+        //DATABASE CONNECTION
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+
+        try {
+            Class.forName(mClass);
+            mConnection = DriverManager.getConnection(mURL, mUserName, mPass);
+            Log.v("DB", getString(R.string.msg_connection_success));
+            productName.setText(getString(R.string.msg_connection_success));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            Log.v("DB", getString(R.string.msg_connection_failed));
+            productName.setText(getString(R.string.msg_connection_failed));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Log.v("DB", getString(R.string.msg_connection_failed));
+            productName.setText(getString(R.string.msg_connection_failed));
+        }
 
         return root;
     }
+
 
 
     private void addAmount (){
@@ -140,8 +155,24 @@ public class PlaceholderFragment extends Fragment {
         amountEditText.setText(String.valueOf(amount));
     }
 
-    private void searchItemByCode(View view){
-        
+    private void searchItemByCode(){
+        if(mConnection!=null){
+            try {
+                String query = "SELECT prod.CNOMBREPRODUCTO " +
+                        "FROM adCOMER2018.dbo.admProductos prod " +
+                        "WHERE prod.CCODIGOPRODUCTO = '" + codeEditText.getText().toString() + "';";
+                Statement statement = mConnection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+                while (resultSet.next()){
+                    productName.setText(resultSet.getString(1));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        } else{
+            productName.setText(getString(R.string.msg_connection_null));
+        }
     }
 
 }
